@@ -10,10 +10,7 @@ printf "Default Port is \e[33m${panelport}\e[0m, let it blank to use this Port :
 read panelport
 sed -i 's@#Listen 80@Listen $panelport@' /etc/apache2/ports.conf
 systemctl restart apache2
-
-
-
-else
+fi
 
 
 sh_ver="1.0.5"
