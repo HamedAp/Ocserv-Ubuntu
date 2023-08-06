@@ -10,6 +10,9 @@ printf "Default Port is \e[33m${panelport}\e[0m, let it blank to use this Port :
 read panelport
 sed -i 's@#Listen 80@Listen $panelport@' /etc/apache2/ports.conf
 systemctl restart apache2
+echo 'www-data ALL=(ALL:ALL) NOPASSWD:/usr/local/bin/ocpasswd' | sudo EDITOR='tee -a' visudo &
+wait
+
 fi
 
 
