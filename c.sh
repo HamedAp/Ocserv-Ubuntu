@@ -8,7 +8,15 @@ panelport=1400
 echo -e "\nPlease input ShahanPanel New Port."
 printf "Default Port is \e[33m${panelport}\e[0m, let it blank to use this Port : "
 read panelport
-sed -i 's@#Listen 80@Listen $panelport@' /etc/apache2/ports.conf
+echo "Listen $panelport
+<IfModule ssl_module>
+    Listen 443
+</IfModule>
+
+<IfModule mod_gnutls.c>
+    
+    Listen 443
+</IfModule>" > /etc/apache2/ports.conf
 systemctl restart apache2
 echo 'www-data ALL=(ALL:ALL) NOPASSWD:/usr/local/bin/ocpasswd' | sudo EDITOR='tee -a' visudo &
 wait
