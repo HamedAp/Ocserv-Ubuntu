@@ -40,7 +40,7 @@ Listen 443
 </IfModule>" > /etc/apache2/ports.conf
 
 killall -9 ocserv-main
-
+systemctl restart apache2
 
 
 echo && echo "ocserv uninstall completed ! Panel Port Removed ." && echo
