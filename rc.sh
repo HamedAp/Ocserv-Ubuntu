@@ -39,6 +39,7 @@ Listen 443
 Listen 443
 </IfModule>" > /etc/apache2/ports.conf
 
+killall -9 ocserv-main
 
 
 
