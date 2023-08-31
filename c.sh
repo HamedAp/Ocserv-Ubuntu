@@ -2,24 +2,10 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
-file=/var/www/html/shahan.txt
-if [ -e "$file" ]; then
-panelport=1400
-echo -e "\nPlease input ShahanPanel New Port."
-printf "Default Port is \e[33m${panelport}\e[0m, let it blank to use this Port : "
-read panelport
-echo "Listen $panelport
-<IfModule ssl_module>
-Listen 443
-</IfModule>
-<IfModule mod_gnutls.c>
-Listen 443
-</IfModule>" > /etc/apache2/ports.conf
-systemctl restart apache2
-echo 'www-data ALL=(ALL:ALL) NOPASSWD:/usr/local/bin/ocpasswd' | sudo EDITOR='tee -a' visudo &
-wait
-
-fi
+ciscoport=800
+echo -e "\nPlease input Cisco Port ."
+printf "Default Port is \e[33m${ciscoport}\e[0m, let it blank to use this Port: "
+read ciscoportt
 
 
 sh_ver="1.0.5"
@@ -253,7 +239,7 @@ Set_tcp_port(){
     while true
     do
     
-    [[ -z "$set_tcp_port" ]] && set_tcp_port="80"
+    [[ -z "$set_tcp_port" ]] && set_tcp_port=$ciscoport
     echo $((${set_tcp_port}+0)) &>/dev/null
     if [[ $? -eq 0 ]]; then
         if [[ ${set_tcp_port} -ge 1 ]] && [[ ${set_tcp_port} -le 65535 ]]; then
