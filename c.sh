@@ -343,5 +343,6 @@ Set_iptables(){
 
 check_sys
 
-touch /etc/ocserv/ocpasswd
+
 Install_ocserv
+touch /etc/ocserv/ocpasswd
