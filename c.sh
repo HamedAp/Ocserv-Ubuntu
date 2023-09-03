@@ -2,7 +2,7 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 clear
-ciscoport=800
+ciscoport=8080
 echo -e "\nPlease input Cisco Port ."
 printf "Default Port is \e[33m${ciscoport}\e[0m, let it blank to use this Port: "
 read ciscoportt
