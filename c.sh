@@ -342,7 +342,6 @@ Set_iptables(){
 }
 
 check_sys
-echo 'www-data ALL=(ALL:ALL) NOPASSWD:/usr/local/bin/ocpasswd' | sudo EDITOR='tee -a' visudo &
-wait
+
 
 Install_ocserv
