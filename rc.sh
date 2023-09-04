@@ -33,7 +33,7 @@ rm -f occtl.8
 
 killall -9 ocserv-main
 
-
+apt autoremove -y
 
 echo && echo "ocserv uninstall completed ! " && echo
 
