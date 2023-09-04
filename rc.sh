@@ -31,18 +31,10 @@ cd '/usr/local/share/man/man8' && rm -f ocserv.8
 rm -f ocpasswd.8
 rm -f occtl.8
 
-echo "Listen 80
-<IfModule ssl_module>
-Listen 443
-</IfModule>
-<IfModule mod_gnutls.c>
-Listen 443
-</IfModule>" > /etc/apache2/ports.conf
-
 killall -9 ocserv-main
-systemctl restart apache2
 
 
-echo && echo "ocserv uninstall completed ! Panel Port Removed ." && echo
+
+echo && echo "ocserv uninstall completed ! " && echo
 
 
