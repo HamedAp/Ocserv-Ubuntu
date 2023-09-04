@@ -6,7 +6,7 @@ ciscoportt=8080
 echo -e "\nPlease input Cisco Port ."
 printf "Default Port is \e[33m${ciscoportt}\e[0m, let it blank to use this Port: "
 read defciscoport
-if [[ -n "${ciscoportt}" ]]; then
+if [[ -n "${defciscoport}" ]]; then
     ciscoportt=${defciscoport}
 fi
 
