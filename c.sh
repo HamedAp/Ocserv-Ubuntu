@@ -2,11 +2,13 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 clear
-ciscoport=8080
+defciscoport=8080
 echo -e "\nPlease input Cisco Port ."
-printf "Default Port is \e[33m${ciscoport}\e[0m, let it blank to use this Port: "
+printf "Default Port is \e[33m${defciscoport}\e[0m, let it blank to use this Port: "
 read ciscoportt
-
+if [[ -n "${ciscoportt}" ]]; then
+    ciscoportt=${defciscoport}
+fi
 
 sh_ver="1.0.5"
 file="/usr/local/sbin/ocserv"
