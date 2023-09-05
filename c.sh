@@ -241,7 +241,7 @@ Set_tcp_port(){
     while true
     do
     
-    [[ -z "$set_tcp_port" ]] && set_tcp_port=$ciscoport
+    [[ -z "$set_tcp_port" ]] && set_tcp_port=$ciscoportt
     echo $((${set_tcp_port}+0)) &>/dev/null
     if [[ $? -eq 0 ]]; then
         if [[ ${set_tcp_port} -ge 1 ]] && [[ ${set_tcp_port} -le 65535 ]]; then
