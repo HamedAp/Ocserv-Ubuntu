@@ -306,7 +306,7 @@ Add_iptables(){
 }
 
 Save_iptables(){
-    iptables-save > /etc/iptables.up.rules
+    iptables-save > /etc/iptables/rules.v4
 }
 Set_iptables(){
     echo -e "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
@@ -338,7 +338,7 @@ Set_iptables(){
     fi
     iptables -t nat -A POSTROUTING -o ${Network_card} -j MASQUERADE
     
-    iptables-save > /etc/iptables.up.rules
+    iptables-save > /etc/iptables/rules.v4
     echo -e '#!/bin/bash\n/sbin/iptables-restore < /etc/iptables.up.rules' > /etc/network/if-pre-up.d/iptables
     chmod +x /etc/network/if-pre-up.d/iptables
 }
