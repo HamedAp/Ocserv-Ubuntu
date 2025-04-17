@@ -76,7 +76,7 @@ Get_ip(){
 }
 Download_ocserv(){
     mkdir "ocserv" && cd "ocserv"
-    wget --inet4-only "https://www.infradead.org/ocserv/download/ocserv-${ocserv_ver}.tar.xz"
+    wget --inet4-only "https://gitlab.com/openconnect/ocserv/-/archive/1.1.6/ocserv-1.1.6.tar.gz"
     [[ ! -s "ocserv-${ocserv_ver}.tar.xz" ]] && echo -e "${Error} ocserv source download failed!" && rm -rf "ocserv/" && rm -rf "ocserv-${ocserv_ver}.tar.xz" && exit 1
     tar -xJf ocserv-1.1.6.tar.xz && cd ocserv-1.1.6
     ./configure
