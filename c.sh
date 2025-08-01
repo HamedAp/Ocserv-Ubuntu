@@ -316,7 +316,25 @@ Set_iptables(){
         echo -e "${Error} ifconfig 未install !"
         read -e -p "Please input your interface name manully(eth0 ens3 enpXsX venet0):" Network_card
         [[ -z "${Network_card}" ]] && echo "Canceled..." && exit 1
-    
+        else
+        Network_card=$(ifconfig|grep "eth0")
+        if [[ ! -z ${Network_card} ]]; then
+            Network_card="eth0"
+        else
+            Network_card=$(ifconfig|grep "ens3")
+            if [[ ! -z ${Network_card} ]]; then
+                Network_card="ens3"
+            else
+                Network_card=$(ifconfig|grep "venet0")
+                if [[ ! -z ${Network_card} ]]; then
+                    Network_card="venet0"
+                else
+                    ifconfig
+                    read -e -p "Current network interface is not eth0 \ ens3(Debian9) \ venet0(OpenVZ) \ enpXsX(CentOS Ubuntu Latest), please manully input your NIC name:" Network_card
+                    [[ -z "${Network_card}" ]] && echo "Canceled..." && exit 1
+                fi
+            fi
+        fi
     fi
     iptables -t nat -A POSTROUTING -o ${Network_card} -j MASQUERADE
     
