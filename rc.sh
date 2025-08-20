@@ -30,9 +30,7 @@ cd '/usr/local/sbin' && rm -f ocserv
 cd '/usr/local/share/man/man8' && rm -f ocserv.8
 rm -f ocpasswd.8
 rm -f occtl.8
-
-killall -9 ocserv-main
-
+/etc/init.d/ocserv stop
 apt autoremove -y
 
 echo && echo "ocserv uninstall completed ! " && echo
